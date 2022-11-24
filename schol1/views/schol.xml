@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- explicit list view definition-->
+       <record id="schol_list" model="ir.ui.view">
+           <field name="name">schol1.courses.tree</field>
+           <field name="model">schol1.courses</field>
+           <field name="arch" type="xml">
+               <tree string="schol">
+
+                           <field name="name"/>
+                           <field name="responsibl_id"/>
+                           <field name="description"/>
+               </tree>
+           </field>
+       </record>
+
+       <record id="schol" model="ir.ui.view">
+           <field name="name">schol1.courses.form</field>
+           <field name="model">schol1.courses</field>
+           <field name="arch" type="xml">
+               <form string="schol">
+                   <sheet>
+                       <group>
+                       <group>
+                           <field name="name"/>
+                           <field name="responsibl_id"/>
+
+                       </group>
+                       <group>
+                           <field name="description"/>
+                       </group>
+                       </group>
+                       <notebook>
+                         <page string="description">
+                             <field name="description"/>
+
+                           </page>
+                           <page string="sessions">
+                                 <field name="session_ids">
+                                   <tree>
+                                      <field name="name"/>
+                                  <field name="start_date"/>
+                                    <field name="duration"/>
+                                    <field name="seats"/>
+
+                                   </tree>
+                               </field>
+
+                           </page>
+
+                       </notebook>
+                   </sheet>
+               </form>
+           </field>
+       </record>
+       <record id="schol_search" model="ir.ui.view">
+           <field name="name">schol1.courses.search</field>
+           <field name="model">schol1.courses</field>
+           <field name="arch" type="xml">
+
+                   <search string="search">
+                      <field name="name"/>
+                        <field name="description"/>
+                   </search>
+
+           </field>
+       </record>
+    <!-- actions opening views on models -->
+
+
+    <record model="ir.actions.act_window" id="schol1_action_window">
+      <field name="name">courses </field>
+      <field name="res_model">schol1.courses</field>
+      <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_fase">
+                create the first course
+
+            </p>
+        </field><!---->
+    </record>
+
+
+    <!-- server action to the one above -->
+
+
+    <!-- Top menu item -->
+<!---->
+    <menuitem name="open academy" id="schol1_menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="open academy" id="schol1_menu_1" parent="schol1_menu_root"/>
+   <!-- <menuitem name="Menu 2" id="schol1_menu_2" parent="schol1_menu_root"/>-->
+
+    <!-- actions -->
+ <menuitem name="courses" id="courses_menu_1_list" parent="schol1_menu_1"
+              action="schol1_action_window"/>
+
+
+
+
+
+
+
+
+       <record id="session" model="ir.ui.view">
+           <field name="name">schol1.session.form</field>
+           <field name="model">schol1.session</field>
+           <field name="arch" type="xml">
+               <form string="session form">
+                <sheet>
+                    <group string="general">
+                       <field name="courses_id"/>
+                        <field name="name"/>
+                        <field name="instructor_id"/>
+                        <field name="active"/>
+                    </group>
+                    <group string="schedule">
+
+                        <field name="start_date"/>
+                        <field name="duration"/>
+                        <field name="seats"/>
+                         <field name="token_seats"/>
+
+                    </group>
+                    <label for ='attendee_ids'/>
+                    <field name="attendee_ids"/>
+                </sheet>
+
+               </form>
+           </field>
+       </record>
+           <record id="session_list" model="ir.ui.view">
+           <field name="name">schol1.session.tree</field>
+           <field name="model">schol1.session</field>
+           <field name="arch" type="xml">
+                   <tree string="session tree">
+                      <field name="name"/>
+                       <field name="courses_id"/>
+
+                   </tree>
+           </field>
+       </record>
+
+    <record model="ir.actions.act_window" id="session_action_window">
+      <field name="name">session </field>
+      <field name="res_model">schol1.session</field>
+      <field name="view_mode">tree,form</field>
+
+    </record>
+
+
+
+        <menuitem name="session" id="session_menu_1_list" parent="schol1_menu_1"
+              action="session_action_window"/>
+</odoo>

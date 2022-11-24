@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access.schol1.courses,access_schol1_courses,schol1.model_schol1_courses,,1,1,1,1
+access.schol1.session,access_schol1_session,schol1.model_schol1_session,,1,1,1,1
+
+
+
+
+
+

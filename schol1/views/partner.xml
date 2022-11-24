@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- improved idea categories list -->
+    <record  model="ir.ui.view" id="partner_instructor_form_view">
+           <field name="name">partner.instructor</field>
+           <field name="model">res.partner</field>
+           <field name="inherit_id" ref="base.view_partner_form"/>
+          <field name="arch" type="xml">
+<!--                <xpath expr="//field[@name='phone']" position="after">-->
+<!--                     <field name="instructor" />-->
+<!--               </xpath>-->
+                <notebook position="inside">
+                    <page string="session">
+                        <group>
+                            <field name="instructor"/>
+                            <field name="session_ids"/>
+                        </group>
+                    </page>
+                </notebook>
+
+                 </field>
+            </record>
+
+
+    <record model="ir.actions.act_window" id="contact">
+      <field name="name">contacts </field>
+      <field name="res_model">res.partner</field>
+      <field name="view_mode">tree,form</field>
+
+    </record>
+
+    <menuitem name="configuration" id="configuration_menu" parent="schol1_menu_root"/>
+<!--   &lt;!&ndash; <menuitem name="Menu 2" id="schol1_menu_2" parent="schol1_menu_root"/>&ndash;&gt;-->
+
+<!--    &lt;!&ndash; actions &ndash;&gt;-->
+    <menuitem name="contacts" id="contacts_menu" parent="configuration_menu"
+              action="contact"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</odoo>

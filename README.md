@@ -1,1 +1,2 @@
 # schol-academy
+# odoodigitalocean
